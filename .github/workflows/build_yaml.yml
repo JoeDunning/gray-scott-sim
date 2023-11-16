@@ -1,0 +1,36 @@
+name: CI Debug
+
+on:
+  push:
+    branches: [ "**" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  BUILD_TYPE: Debug
+
+jobs:
+#--------------
+  build:
+    runs-on: ubuntu-latest
+  
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Install Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y g++ cmake make
+
+    - name: Build Action
+      run: mkdir build
+      
+    - name: Init CMake
+      run: cmake -S ${{github.workspace}} -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+
+    - name: Build Project
+      run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+
+    - name: Tests Execution | tests_exec in CMakeLists
+      working-directory: ${{github.workspace}}/build
+      run: ${{github.workspace}}/build/test_exec

@@ -1,0 +1,22 @@
+name: Docker CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set date
+      run: echo "NOW=$(date +%s)" >> $GITHUB_ENV
+
+    - name: Build 
+      run: docker build . --file Dockerfile --tag gray-scott-group19:$NOW
+
+    - name : Test run
+      run : docker run gray-scott-sim-2023-group8:$NOW ./test_exec
