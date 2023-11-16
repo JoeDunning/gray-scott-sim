@@ -51,7 +51,7 @@ endif()
 # add_subdirectory(lib)  # Move this line up
 add_subdirectory(tests)  # Move this line up
 
-#add_library(testlib tests/lib/gs.cpp include/gs.h include/acutest.h)
+add_library(testlib tests/lib/gs.cpp include/gs.h include/acutest.h)
 
 # Add the main executable | Include the headers folder
 add_executable(main_target main.cpp)
