@@ -66,6 +66,6 @@ add_executable(test_exec tests/gs_test_1.cpp)
 
 # Link the gray_scott_lib library
 target_link_libraries(main_target PRIVATE gs)
-
+target_link_libraries(test_exec PRIVATE gs)
 # 添加 include 文件夹
 include_directories(include)
