@@ -1,4 +1,4 @@
-FROM debian:latest AS build
+FROM gcc:latest AS build
 
 RUN apt-get update && apt-get install -y cmake
 
@@ -11,7 +11,7 @@ RUN cmake -S . -B /app/build
 
 RUN cmake --build /app/build
 
-FROM debian:latest
+FROM gcc:latest
 
 WORKDIR /app
 
