@@ -1,4 +1,4 @@
-FROM gcc:latest AS build
+FROM debian:latest AS build
 
 RUN apt-get update && apt-get install -y cmake
 
