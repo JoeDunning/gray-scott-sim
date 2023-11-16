@@ -12,7 +12,7 @@ add_executable(gs_test ${TEST_SOURCES})
 add_subdirectory(lib)
 
 # 链接测试框架
-target_link_libraries(gs_test PRIVATE gs)
+target_link_libraries(gs_test PRIVATE acutest)
 
 # 设置测试
 add_test(NAME gs_test COMMAND gs_test)
