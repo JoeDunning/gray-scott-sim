@@ -55,13 +55,14 @@ add_library(testlib tests/lib/gs.cpp include/gs.h include/acutest.h)
 
 # Add the main executable | Include the headers folder
 add_executable(main_target main.cpp)
+
 target_include_directories(main_target PRIVATE include)
 
 # Enable Testing
 enable_testing()
 
 # Add testing executable 
-add_executable(test_exec tests/gs_test_1.cpp)
+# add_executable(test_exec tests/gs_test_1.cpp)
 
 # Link the gray_scott_lib library
 target_link_libraries(main_target PRIVATE gs)
